@@ -10,7 +10,6 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     
-    # Engedélyek a GitHub Token számára, hogy feltölthessen a csomagtárolóba (GHCR)
     permissions:
       packages: write
       contents: read
@@ -31,8 +30,8 @@ jobs:
         with:
           context: ./BackendApi
           push: true
-          # A repository tulajdonosának neve + az image neve
           tags: ghcr.io/${{ github.repository_owner }}/library-backend:latest
+          provenance: false
 
       - name: 4. Frontend Docker image build és push
         uses: docker/build-push-action@v5
@@ -40,3 +39,4 @@ jobs:
           context: ./FrontendApp
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/library-frontend:latest
+          provenance: false
