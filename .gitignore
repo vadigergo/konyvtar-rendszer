@@ -1,0 +1,11 @@
+# Node és Angular fájlok
+FrontendApp/node_modules/
+FrontendApp/dist/
+FrontendApp/.angular/
+
+# .NET fájlok
+BackendApi/bin/
+BackendApi/obj/
+
+# Egyéb
+.vscode/
