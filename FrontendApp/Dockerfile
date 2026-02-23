@@ -15,7 +15,7 @@ FROM nginx:alpine
 
 # Bemásoljuk a lefordított Angular fájlokat az Nginx publikus mappájába
 # FONTOS: Az Angular 17+ a 'browser' mappába generál!
-COPY --from=build /app/dist/frontend-app/browser /usr/share/nginx/html
+COPY --from=build /app/dist/FrontendApp/browser /usr/share/nginx/html
 
 # A 80-as porton fog figyelni az Nginx
 EXPOSE 80
