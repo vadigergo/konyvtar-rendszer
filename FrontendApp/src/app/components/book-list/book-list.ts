@@ -34,7 +34,7 @@ export class BookListComponent implements OnInit {
         this.books = [...data];
         console.log("Összes könyv a memóriában:", this.books.length); 
         
-        // Új adatnál visszaugrunk az első oldalra és újraszámolunk mindent
+        // Új adatnál visszaugrik az első oldalra és újraszámol mindent
         this.currentPage = 1;
         this.updatePagination();
       },
@@ -61,14 +61,14 @@ export class BookListComponent implements OnInit {
     
     this.paginatedBooks = this.books.slice(startIndex, endIndex);
     
-    // Szólunk az Angularnak, hogy rajzolja újra a képernyőt!
+    // Szól az Angularnak, hogy rajzolja újra a képernyőt!
     this.cdr.detectChanges();
   }
 
   changePage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.updatePagination(); // Lapozáskor is újraszámolunk
+      this.updatePagination(); // Lapozáskor is újraszámolu
     }
   }
   

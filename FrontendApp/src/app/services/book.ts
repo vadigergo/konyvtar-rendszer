@@ -9,7 +9,7 @@ import { Book } from '../models/book';
 export class BookService {
   private apiUrl = 'http://localhost:5000/api/books';
 
-  constructor(private http: HttpClient) { } // Ellenőrizd, hogy ez pontosan így szerepel-e!
+  constructor(private http: HttpClient) { } 
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.apiUrl);

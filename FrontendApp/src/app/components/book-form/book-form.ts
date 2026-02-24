@@ -9,8 +9,8 @@ import { Book } from '../../models/book';
   selector: 'app-book-form',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './book-form.html', // Hivatkozás a te HTML fájlodra
-  styleUrl: './book-form.css'      // Hivatkozás a te CSS fájlodra
+  templateUrl: './book-form.html', // Hivatkozás a HTML fájlra
+  styleUrl: './book-form.css'      // Hivatkozás a CSS fájlra
 })
 export class BookFormComponent implements OnInit {
   // Egy üres könyv objektum alapértelmezett adatokkal
@@ -30,12 +30,12 @@ export class BookFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Megnézzük, van-e 'id' a böngésző URL-jében (tehát szerkesztés mód-e)
+    // Megnézi, van-e 'id' a böngésző URL-jében (tehát szerkesztés mód-e)
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;
       this.currentId = id;
-      // Lekérjük a könyvet az adatbázisból, és beletöltjük az űrlapba
+      // Lekéri a könyvet az adatbázisból, és beletölti az űrlapba
       this.bookService.getBook(id).subscribe({
         next: (data) => this.book = data,
         error: (err) => console.error('Hiba a könyv betöltésekor', err)

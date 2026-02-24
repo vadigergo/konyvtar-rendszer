@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]")] // Ez azt jelenti, hogy az URL-je: api/books lesz
+[Route("api/[controller]")] // Ez azt jelenti, hogy az URL-je api/books lesz
 public class BooksController : ControllerBase
 {
     private readonly BookService _bookService;

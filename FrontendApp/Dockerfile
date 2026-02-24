@@ -1,4 +1,4 @@
-# 1. Fázis: Angular kód buildelése (Node.js környezet)
+# 1. Fázis: Angular kód buildelése
 FROM node:20 AS build
 WORKDIR /app
 
@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Kód másolása és lefordítása éles (production) verzióba
+# Kód másolása és lefordítása éles verzióba
 COPY . ./
 RUN npm run build --configuration=production
 
@@ -14,7 +14,6 @@ RUN npm run build --configuration=production
 FROM nginx:alpine
 
 # Bemásoljuk a lefordított Angular fájlokat az Nginx publikus mappájába
-# FONTOS: Az Angular 17+ a 'browser' mappába generál!
 COPY --from=build /app/dist/FrontendApp/browser /usr/share/nginx/html
 
 # A 80-as porton fog figyelni az Nginx

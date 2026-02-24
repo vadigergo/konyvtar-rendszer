@@ -7,7 +7,7 @@ public class BookService
 {
     private readonly IMongoCollection<Book> _booksCollection;
 
-    // A konstruktorban olvassuk ki az appsettings.json-ből a beállításokat
+    // A konstruktorban olvasom ki az appsettings.json-ből a beállításokat
     public BookService(IConfiguration configuration)
     {
         var mongoClient = new MongoClient(configuration["MongoDbSettings:ConnectionString"]);
