@@ -15,6 +15,7 @@ Ehhez a Bitnami chartját használtam. A terminálba ezt kell beírni:
 helm repo add bitnami [https://charts.bitnami.com/bitnami](https://charts.bitnami.com/bitnami)
 helm install mongodb bitnami/mongodb --set auth.enabled=false
 
+### 2. Alkalmazás indítása
 A k8s mappában lévő leírókkal (manifestekkel) rántjuk be a konténereket.
 ```bash
 kubectl apply -f k8s/mongodb.yaml
