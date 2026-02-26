@@ -33,3 +33,5 @@ kubectl apply -f k8s/frontend.yaml
 * **Böngészés:** A kezdőlapon látod a könyvek listáját. Ha több elem van, a táblázat alatt tudsz lapozni (pagination).
 * **Hozzáadás:** Kattints az "Új könyv" gombra, töltsd ki az űrlapot és mentsd el.
 * **Műveletek:** A táblázatban minden sor végén található gombokkal tudod az adott könyvet módosítani vagy törölni.
+
+
