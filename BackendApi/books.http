@@ -1,11 +1,10 @@
 @BackendApi_HostAddress = http://localhost:5000
 
-### 1. Összes könyv lekérdezése (Read - Üres lista lesz először)
+### 1. Összes könyv lekérdezése
 GET {{BackendApi_HostAddress}}/api/books
 Accept: application/json
 
 ### 2. Új könyv hozzáadása (Create)
-# Kattints a "Send Request" gombra efelett a sor felett!
 POST {{BackendApi_HostAddress}}/api/books
 Content-Type: application/json
 
@@ -15,12 +14,12 @@ Content-Type: application/json
   "year": 1954
 }
 
-### 3. Egy konkrét könyv lekérdezése (Módosítsd az ID-t a létrehozás után kapottra!)
+### 3. Egy konkrét könyv lekérdezése
 @bookId = 699c32020975b172a2b1495e
 GET {{BackendApi_HostAddress}}/api/books/{{bookId}}
 Accept: application/json
 
-### 4. Könyv frissítése (Update - Módosítsd az ID-t!)
+### 4. Könyv frissítése
 PUT {{BackendApi_HostAddress}}/api/books/{{bookId}}
 Content-Type: application/json
 
@@ -31,5 +30,5 @@ Content-Type: application/json
   "year": 1954
 }
 
-### 5. Könyv törlése (Delete - Módosítsd az ID-t!)
+### 5. Könyv törlése
 DELETE {{BackendApi_HostAddress}}/api/books/{{bookId}}

@@ -10,7 +10,7 @@ A projektet nulláról építettem fel, az alábbi lépésekben:
 
 ## Telepítési útmutató (Helyi K8s klaszteren)
 
-Ha szeretnéd kipróbálni helyben (pl. Docker Desktop Kubernetes-szel), így tudod elindítani:
+Ha szeretnéd kipróbálni helyben (pl. Docker Desktop Kubernetes-el), így tudod elindítani:
 
 ### 1. Adatbázis (MongoDB) telepítése Helm-mel:
 Ehhez a Bitnami chartját használtam. A terminálba ezt kell beírni:
