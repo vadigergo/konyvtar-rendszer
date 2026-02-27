@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">{{ isEditMode ? 'Könyv Szerkesztése' : 'Új Könyv Hozzáadása' }}</h4>
+          </div>
+          <div class="card-body">
+            
+            <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+              
+              <div class="mb-3">
+                <label for="title" class="form-label">Könyv címe</label>
+                <input type="text" class="form-control" id="title" name="title" [(ngModel)]="book.title" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="author" class="form-label">Szerző</label>
+                <input type="text" class="form-control" id="author" name="author" [(ngModel)]="book.author" required>
+              </div>
+              
+              <div class="mb-4">
+                <label for="year" class="form-label">Kiadás éve</label>
+                <input type="number" class="form-control" id="year" name="year" [(ngModel)]="book.year" required>
+              </div>
+              
+              <div class="d-flex justify-content-between">
+                <a routerLink="/" class="btn btn-secondary">Mégsem</a>
+                <button type="submit" class="btn btn-success" [disabled]="!bookForm.form.valid">
+                  {{ isEditMode ? 'Módosítás Mentése' : 'Könyv Létrehozása' }}
+                </button>
+              </div>
+              
+            </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

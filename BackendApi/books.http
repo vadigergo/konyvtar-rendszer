@@ -1,0 +1,34 @@
+@BackendApi_HostAddress = http://localhost:5000
+
+### 1. Összes könyv lekérdezése
+GET {{BackendApi_HostAddress}}/api/books
+Accept: application/json
+
+### 2. Új könyv hozzáadása (Create)
+POST {{BackendApi_HostAddress}}/api/books
+Content-Type: application/json
+
+{
+  "title": "A Gyűrűk Ura",
+  "author": "J.R.R. Tolkien",
+  "year": 1954
+}
+
+### 3. Egy konkrét könyv lekérdezése
+@bookId = 699c32020975b172a2b1495e
+GET {{BackendApi_HostAddress}}/api/books/{{bookId}}
+Accept: application/json
+
+### 4. Könyv frissítése
+PUT {{BackendApi_HostAddress}}/api/books/{{bookId}}
+Content-Type: application/json
+
+{
+  "id": "{{bookId}}",
+  "title": "A Gyűrűk Ura: A Gyűrű Szövetsége",
+  "author": "J.R.R. Tolkien",
+  "year": 1954
+}
+
+### 5. Könyv törlése
+DELETE {{BackendApi_HostAddress}}/api/books/{{bookId}}
