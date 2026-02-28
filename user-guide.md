@@ -3,7 +3,10 @@
 Ez az útmutató bemutatja, hogyan lehet a projektet a saját gépeden (lokálisan) elindítani és tesztelni.
 
 ### 1. Adatbázis elindítása
-Először indítsd el a **Docker Desktop** alkalmazást a gépeden, majd indítsd el a `local.mongo` nevű konténert. Ez felel az adatbázis futtatásáért.
+Először indítsd el a **Docker Desktop** alkalmazást a gépeden, majd futtass egy MongoDB konténert az alábbi paranccsal:
+```bash
+docker run -d --name local.mongo -p 27017:27017 mongo
+```
 
 ### 2. Backend (Szerver) indítása
 Nyiss egy terminált a VS Code-ban, navigálj a backend mappájába, és indítsd el az alkalmazást az alábbi paranccsal:
