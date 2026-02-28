@@ -5,7 +5,7 @@ Ez az útmutató bemutatja, hogyan lehet a projektet a saját gépeden (lokális
 ### 1. Adatbázis elindítása
 Először indítsd el a **Docker Desktop** alkalmazást a gépeden, majd futtass egy MongoDB konténert az alábbi paranccsal:
 ```bash
-docker run -d --name local.mongo -p 27017:27017 mongo
+docker run -d -p 27017:27017 --name local-mongo mongo:latest
 ```
 
 ### 2. Backend (Szerver) indítása
