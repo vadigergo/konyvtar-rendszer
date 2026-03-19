@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; // <-- 1. Hozzáadtuk a ChangeDetectorRef-et
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Ez kell az űrlapok kezeléséhez
+import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { BookService } from '../../services/book';
 import { Book } from '../../models/book';
@@ -9,15 +9,14 @@ import { Book } from '../../models/book';
   selector: 'app-book-form',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './book-form.html', // Hivatkozás a HTML fájlra
-  styleUrl: './book-form.css'      // Hivatkozás a CSS fájlra
+  templateUrl: './book-form.html',
+  styleUrl: './book-form.css'
 })
 export class BookFormComponent implements OnInit {
-  // Egy üres könyv objektum alapértelmezett adatokkal
   book: Book = {
     title: '',
     author: '',
-    year: new Date().getFullYear() // Az aktuális év
+    year: new Date().getFullYear()
   };
 
   isEditMode: boolean = false;
@@ -26,33 +25,33 @@ export class BookFormComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private router: Router,
-    private route: ActivatedRoute // Ezzel tudjuk kiolvasni az URL-ből az ID-t
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef // <-- 2. Injektáltuk az "ébresztőórát"
   ) {}
 
   ngOnInit(): void {
-    // Megnézi, van-e 'id' a böngésző URL-jében (tehát szerkesztés mód-e)
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;
       this.currentId = id;
-      // Lekéri a könyvet az adatbázisból, és beletölti az űrlapba
+      
       this.bookService.getBook(id).subscribe({
-        next: (data) => this.book = data,
+        next: (data) => {
+          this.book = data;
+          this.cdr.detectChanges(); // <-- 3. Itt szólunk az Angularnak, hogy azonnal frissítse a képernyőt!
+        },
         error: (err) => console.error('Hiba a könyv betöltésekor', err)
       });
     }
   }
 
-  // Amikor a felhasználó rányom a Mentés gombra
   onSubmit(): void {
     if (this.isEditMode) {
-      // Szerkesztés (PUT kérés)
       this.bookService.updateBook(this.currentId, this.book).subscribe({
-        next: () => this.router.navigate(['/']), // Siker esetén visszadob a főoldalra (listára)
+        next: () => this.router.navigate(['/']),
         error: (err) => console.error('Hiba a szerkesztésnél', err)
       });
     } else {
-      // Új létrehozása (POST kérés)
       this.bookService.createBook(this.book).subscribe({
         next: () => this.router.navigate(['/']),
         error: (err) => console.error('Hiba a mentésnél', err)
